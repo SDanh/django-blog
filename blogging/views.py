@@ -9,15 +9,18 @@ from django.views.generic.detail import DetailView
 
 # Create your views here.
 
+
 class BloggingListView(ListView):
     model = Post
-    template_name = 'blogging/list.html'
-    queryset = Post.objects.order_by('-created_date').exclude(published_date=None)
+    template_name = "blogging/list.html"
+    queryset = Post.objects.order_by("-created_date").exclude(published_date=None)
+
 
 class BloggingDetailView(DetailView):
     model = Post
-    template_name = 'blogging/detail.html'
+    template_name = "blogging/detail.html"
     queryset = Post.objects.exclude(published_date=None)
+
 
 # def stub_view(request, *args, **kwargs):
 #     body = "Stub View\n\n"
