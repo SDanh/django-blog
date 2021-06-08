@@ -21,9 +21,9 @@ from rest_framework import routers
 from blogging.views import PostViewSet, UserViewSet, CategoryViewSet
 
 router = routers.DefaultRouter()
-router.register(r'user', UserViewSet)
-router.register(r'post', PostViewSet)
-router.register(r'category', CategoryViewSet)
+router.register(r"user", UserViewSet)
+router.register(r"post", PostViewSet)
+router.register(r"category", CategoryViewSet)
 
 urlpatterns = [
     path("", include("blogging.urls")),

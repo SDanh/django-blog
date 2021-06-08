@@ -1,4 +1,3 @@
-
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect, Http404
 
@@ -18,25 +17,31 @@ class UserViewSet(viewsets.ModelViewSet):
     """
     API endpoint for Users
     """
+
     queryset = User.objects.all()
     serializer_class = UserSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+
 
 class PostViewSet(viewsets.ModelViewSet):
     """
     API endpoint for Posts
     """
+
     queryset = Post.objects.all()
     serializer_class = PostSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+
 
 class CategoryViewSet(viewsets.ModelViewSet):
     """
     API endpoint for Category
     """
+
     queryset = Category.objects.all()
     serializer_class = CatSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+
 
 class BloggingListView(ListView):
     model = Post
