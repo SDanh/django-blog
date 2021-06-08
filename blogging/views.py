@@ -1,14 +1,42 @@
+
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect, Http404
 
 from django.template import loader
-from blogging.models import Post
+from blogging.models import Post, Category
 
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 
-# Create your views here.
+from rest_framework import viewsets
+from rest_framework import permissions
+from blogging.serializers import PostSerializer, UserSerializer, CatSerializer
+from django.contrib.auth.models import User
 
+# Create your views here.
+class UserViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint for Users
+    """
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+
+class PostViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint for Posts
+    """
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+
+class CategoryViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint for Category
+    """
+    queryset = Category.objects.all()
+    serializer_class = CatSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
 class BloggingListView(ListView):
     model = Post
